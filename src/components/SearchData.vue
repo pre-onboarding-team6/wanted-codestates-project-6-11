@@ -21,6 +21,12 @@
       placeholder="기업명을 검색하세요"
       @keyup.enter="searchCompanyData"
     />
+    <div
+      :class="{ show: this.noResult, hide: !this.noResult }"
+      class="no-result"
+    >
+      <span>기업 정보가 없습니다.</span>
+    </div>
   </div>
 </template>
 
@@ -31,6 +37,7 @@ export default {
     return {
       searchValue: '',
       company: '',
+      noResult: false,
     };
   },
   methods: {
@@ -45,11 +52,18 @@ export default {
         }
       }
 
-      // 없는 데이터를 찾을 때 로직
-      console.log('없음');
+      // 기업 정보가 없는 경우
+      this.showAndHideMessage();
+    },
+    showAndHideMessage() {
+      this.noResult = true;
+      setTimeout(() => {
+        this.noResult = false;
+      }, 2000);
     },
     clearResult() {
       this.company = '';
+      this.$emit('search_result', {});
     },
   },
 };
@@ -143,13 +157,6 @@ export default {
   /* Mono./Dark 020 . 727272 */
 
   color: #727272;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 0px;
 }
 .search-input {
   display: flex;
@@ -182,5 +189,22 @@ export default {
 }
 .hide {
   display: none;
+}
+.no-result {
+  position: absolute;
+  left: 80px;
+  top: 138px;
+
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px 1px rgba(184, 184, 184, 0.72);
+  background: #fff;
+
+  justify-content: center;
+  align-items: center;
+}
+.show {
+  display: flex;
 }
 </style>
