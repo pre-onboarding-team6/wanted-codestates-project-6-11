@@ -54,6 +54,7 @@ export default {
 
       // 기업 정보가 없는 경우
       this.showAndHideMessage();
+      this.clearResult();
     },
     showAndHideMessage() {
       this.noResult = true;
