@@ -2,12 +2,17 @@
   <div class="search-wrapper">
     <div class="search-row">
       <span class="search-title">검색 결과 ></span>
-      <span class="search-company">
+      <span class="search-company" :class="{ hide: this.company === '' }">
         <span class="company-text">
           {{ company }}
         </span>
       </span>
-      <span class="clear" @click="clearResult">x</span>
+      <span
+        class="clear"
+        @click="clearResult"
+        :class="{ hide: this.company === '' }"
+        >x</span
+      >
     </div>
     <input
       class="search-input"
@@ -26,7 +31,6 @@ export default {
     return {
       searchValue: '',
       company: '',
-      result: {},
     };
   },
   methods: {
@@ -35,9 +39,8 @@ export default {
         const { name, result } = compData;
         if (name === this.searchValue) {
           this.company = name;
-          this.result = result;
           this.searchValue = '';
-          console.log(result);
+          this.$emit('search_result', result);
           return;
         }
       }
@@ -176,5 +179,8 @@ export default {
   height: 16px;
   left: 328px;
   top: 23px;
+}
+.hide {
+  display: none;
 }
 </style>
