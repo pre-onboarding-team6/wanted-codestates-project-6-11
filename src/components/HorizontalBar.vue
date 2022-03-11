@@ -4,7 +4,8 @@ import { HorizontalBar } from 'vue-chartjs';
 export default {
   extends: HorizontalBar,
   props: {
-    chartData: Object,
+    user: Object,
+    company: Object,
   },
   data() {
     return {
@@ -19,11 +20,6 @@ export default {
           bodySpacing: 2,
           titleFontColor: 'black',
           bodyFontColor: 'black',
-          callbacks: {
-            // label: function (tooltips) {
-            //   return tooltips.yAxes * -1;
-            // },
-          },
         },
         scales: {
           yAxes: [
@@ -56,20 +52,19 @@ export default {
     };
   },
   methods: {
-    resultData(chartData) {
-      let initial = Object.values(chartData.initial);
-      let user = chartData.user && Object.values(chartData.user);
-      let userData = user.map((score) => {
+    resultData({ user, company }) {
+      const labels = ['', '', '', '', ''];
+      let userData = user.score.map((score) => {
         if (score > 5) return score * -1;
         return 10 - score;
       });
-      let company = chartData.company && Object.values(chartData.company);
-      let companyData = company.map((score) => {
+      let companyData = company?.score.map((score) => {
         if (score > 5) return score * -1;
         return 10 - score;
       });
+      console.log(companyData);
       const data = {
-        labels: initial,
+        labels,
         datasets: [
           {
             label: '사용자',
@@ -93,7 +88,10 @@ export default {
     },
   },
   mounted() {
-    this.renderChart(this.resultData(this.chartData), this.options);
+    this.renderChart(
+      this.resultData({ user: this.user, company: this.company }),
+      this.options,
+    );
   },
 };
 </script>

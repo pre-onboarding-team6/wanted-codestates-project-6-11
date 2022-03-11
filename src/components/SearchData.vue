@@ -25,7 +25,7 @@
       </span>
       <span
         class="clear"
-        @click="clearResult"
+        v-on:click="clearResult"
         :class="{ hide: this.company === '' }"
       >
         <svg
@@ -55,7 +55,7 @@
       type="text"
       v-model="searchValue"
       placeholder="기업명을 검색하세요"
-      @keyup.enter="searchCompanyData"
+      v-on:keyup.enter="searchCompanyData"
     />
     <div
       :class="{ show: this.noResult, hide: !this.noResult }"
@@ -67,8 +67,11 @@
 </template>
 
 <script>
-import data from '../assets/data.json';
 export default {
+  name: 'SearchData',
+  props: {
+    companies: Array,
+  },
   data() {
     return {
       searchValue: '',
@@ -78,16 +81,15 @@ export default {
   },
   methods: {
     searchCompanyData() {
-      for (let compData of data) {
-        const { name, result } = compData;
+      console.log(this.searchValue);
+      for (let compData of this.companies) {
+        const { name } = compData;
         if (name === this.searchValue) {
           this.company = name;
-          this.searchValue = '';
-          this.$emit('search_result', result);
+          this.$emit('selectCompanyFromChild', compData);
           return;
         }
       }
-
       // 기업 정보가 없는 경우
       this.showAndHideMessage();
       this.clearResult();
@@ -100,7 +102,8 @@ export default {
     },
     clearResult() {
       this.company = '';
-      this.$emit('search_result', {});
+      this.searchValue = '';
+      this.$emit('selectCompanyFromChild', undefined);
     },
   },
 };
@@ -113,11 +116,10 @@ export default {
   padding: 20px 15px;
 }
 .search-row {
-  position: absolute;
   width: 360px;
-  height: 62px;
-  left: 0px;
-  top: 72px;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
 
   font-family: 'Noto Sans';
   font-style: normal;
@@ -129,18 +131,14 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0px;
-
-  position: absolute;
-  width: 234px;
-  height: 22px;
-  left: 16px;
-  top: 20px;
 
   font-weight: 700;
   font-size: 16px;
 
   color: #727272;
+}
+.search-title svg {
+  margin-left: 4px;
 }
 .input-wrapper {
   width: 100%;
@@ -153,8 +151,6 @@ export default {
   justify-content: flex-end;
   align-items: flex-start;
   padding: 0px 0px 0px 16px;
-
-  position: absolute;
   width: 81px;
   height: 20px;
   left: 235px;
@@ -192,7 +188,6 @@ export default {
   align-items: center;
   padding: 12px 16px;
 
-  position: absolute;
   width: 328px;
   height: 48px;
   left: 16px;
@@ -209,7 +204,6 @@ export default {
 }
 .clear {
   cursor: pointer;
-  position: absolute;
   width: 16px;
   height: 16px;
   left: 328px;

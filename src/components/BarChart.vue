@@ -23,7 +23,12 @@
         </ul>
       </div>
       <div>
-        <horizontal-bar :chartData="chartData" :width="150" :height="180" />
+        <horizontal-bar
+          :user="user"
+          :company="company"
+          :width="150"
+          :height="180"
+        />
       </div>
       <div class="bar-chart-right">
         <ul class="right-list">
@@ -52,14 +57,15 @@ const MAXIMUM = 10;
 
 export default {
   props: {
-    chartData: Object,
+    user: Object,
+    company: Object,
   },
   components: {
     HorizontalBar,
   },
   data() {
     return {
-      userData: Object.values(this.chartData.user),
+      userData: this.user.score,
       MAXIMUM,
       leftCategory: [
         { id: 1, item: '적극성' },

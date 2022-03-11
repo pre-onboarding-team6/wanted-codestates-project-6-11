@@ -16,10 +16,10 @@ export default {
   props: {
     selectedCompany: Object,
     user: Object,
-    selectedTab: String,
+    currentTab: String,
   },
   mounted() {
-    if (this.selectedCompany && this.selectedTab === '모두') {
+    if (this.selectedCompany && this.currentTab === '모두') {
       this.renderChart(
         {
           labels: ['적극적인', '자신있는', '책임있는', '개인주의', '수평적인'],
@@ -48,7 +48,7 @@ export default {
         },
         options,
       );
-    } else if (!this.selectedCompany || this.selectedTab === '본인') {
+    } else if (!this.selectedCompany || this.currentTab === '본인') {
       this.renderChart(
         {
           labels: ['적극적인', '자신있는', '책임있는', '개인주의', '수평적인'],
@@ -67,7 +67,7 @@ export default {
         },
         options,
       );
-    } else if (this.selectedCompany && this.selectedTab === '회사') {
+    } else if (this.selectedCompany && this.currentTab === '회사') {
       this.renderChart(
         {
           labels: ['적극적인', '자신있는', '책임있는', '개인주의', '수평적인'],

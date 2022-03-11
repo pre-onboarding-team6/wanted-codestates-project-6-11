@@ -8,7 +8,7 @@
       </div>
       <div class="title">진단결과</div>
     </div>
-    <div class="re-diagnosis" @click="reload">다시 진단하기</div>
+    <div class="re-diagnosis" v-on:click="reload">다시 진단하기</div>
   </div>
 </template>
 
@@ -31,7 +31,8 @@ export default {
   width: 360px;
   height: 72px;
   padding: 16px;
-  position: absolute;
+  position: sticky;
+  top: 0;
   background: #ffffff;
   border-bottom: 1px solid rgb(241, 241, 241);
 }

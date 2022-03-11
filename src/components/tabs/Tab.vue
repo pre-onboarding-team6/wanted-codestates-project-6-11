@@ -1,8 +1,8 @@
 <template>
-  <button :class="[checkFocus, 'tab']" @click="onTabClick">
+  <button :class="[checkFocus, 'tab']" v-on:click="onTabClick">
     <Icon
-      :isDouble="tabOrder === 'tab1' ? true : false"
-      :isCompany="tabOrder === 'tab3' ? true : false"
+      :isDouble="tabName === '모두' ? true : false"
+      :isCompany="tabName === '회사' ? true : false"
     />
     <span :class="[checkFocus, 'type']">{{ tabName }}</span>
   </button>
@@ -17,18 +17,17 @@ export default {
     Icon,
   },
   props: {
-    tabOrder: String,
     tabName: String,
     value: String,
   },
   computed: {
     checkFocus() {
-      return this.tabOrder === this.value ? 'focus' : '';
+      return this.tabName === this.value ? 'focus' : '';
     },
   },
   methods: {
-    onTabClick() {
-      this.$emit('input', this.tabOrder);
+    onTabClick: function () {
+      this.$emit('changeFromChild', this.tabName);
     },
   },
 };
