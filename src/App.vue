@@ -1,23 +1,23 @@
 <template>
-  <div class="container">
-  <div id="app">
   <div id="background">
-    <div id="app"><Header /></div>
-        <bar-chart :chartData="chartData" />
+    <div id="app">
+      <header-bar />
+      <bar-chart :chartData="chartData" />
+    </div>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
+import HeaderBar from './components/HeaderBar.vue';
 import BarChart from './components/BarChart.vue';
 
 export default {
   name: 'App',
   components: {
-    Header,
+    HeaderBar,
     BarChart,
   },
-    data() {
+  data() {
     return {
       chartData: {
         user: {
@@ -43,6 +43,7 @@ export default {
         },
       },
     };
+  },
 };
 </script>
 
