@@ -1,16 +1,23 @@
 <template>
   <div class="container">
-    <bar-chart :chartData="chartData" />
+  <div id="app">
+  <div id="background">
+    <div id="app"><Header /></div>
+        <bar-chart :chartData="chartData" />
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue';
 import BarChart from './components/BarChart.vue';
 
 export default {
   name: 'App',
-  components: { BarChart },
-  data() {
+  components: {
+    Header,
+    BarChart,
+  },
+    data() {
     return {
       chartData: {
         user: {
@@ -36,15 +43,18 @@ export default {
         },
       },
     };
-  },
 };
 </script>
 
-<style scoped>
-.container {
-  margin: 10px;
+<style>
+#background {
+  background: #e5e5e5;
+}
+#app {
+  position: relative;
   width: 360px;
-  height: 812px;
-  border: 1px solid #ddd;
+  height: 985px;
+  margin: auto;
+  background: #ffffff;
 }
 </style>
