@@ -87,6 +87,7 @@ export default {
 </script>
 <style scoped>
 .bar-chart-title {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
