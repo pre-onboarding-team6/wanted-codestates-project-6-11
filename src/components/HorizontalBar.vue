@@ -6,6 +6,7 @@ export default {
   props: {
     user: Object,
     company: Object,
+    currentTab: String,
   },
   data() {
     return {
@@ -54,7 +55,7 @@ export default {
   methods: {
     resultData({ user, company }) {
       const labels = ['', '', '', '', ''];
-      let userData = user.score.map((score) => {
+      let userData = user?.score.map((score) => {
         if (score > 5) return score * -1;
         return 10 - score;
       });
@@ -88,10 +89,19 @@ export default {
     },
   },
   mounted() {
-    this.renderChart(
-      this.resultData({ user: this.user, company: this.company }),
-      this.options,
-    );
+    if (this.company && this.currentTab === '모두') {
+      this.renderChart(
+        this.resultData({ user: this.user, company: this.company }),
+        this.options,
+      );
+    } else if (!this.company || this.currentTab === '본인') {
+      this.renderChart(this.resultData({ user: this.user }), this.options);
+    } else if (this.company && this.currentTab === '회사') {
+      this.renderChart(
+        this.resultData({ company: this.company }),
+        this.options,
+      );
+    }
   },
 };
 </script>

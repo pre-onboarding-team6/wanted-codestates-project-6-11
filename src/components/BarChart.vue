@@ -24,6 +24,7 @@
       </div>
       <div>
         <horizontal-bar
+          :currentTab="currentTab"
           :user="user"
           :company="company"
           :width="150"
@@ -59,6 +60,7 @@ export default {
   props: {
     user: Object,
     company: Object,
+    currentTab: String,
   },
   components: {
     HorizontalBar,
