@@ -1,28 +1,50 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <bar-chart :chartData="chartData" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import BarChart from './components/BarChart.vue';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
+  components: { BarChart },
+  data() {
+    return {
+      chartData: {
+        user: {
+          aggressive: 8,
+          confident: 10,
+          responsible: 10,
+          indivisual: 3,
+          horizontal: 6,
+        },
+        company: {
+          aggressive: 10,
+          confident: 9,
+          responsible: 9,
+          indivisual: 5,
+          horizontal: 3,
+        },
+        initial: {
+          aggressive: '',
+          confident: '',
+          responsible: '',
+          indivisual: '',
+          horizontal: '',
+        },
+      },
+    };
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.container {
+  margin: 10px;
+  width: 360px;
+  height: 812px;
+  border: 1px solid #ddd;
 }
 </style>
