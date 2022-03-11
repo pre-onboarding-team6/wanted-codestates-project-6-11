@@ -18,6 +18,7 @@
         v-on:selectTabFromChild="selectTab"
       />
       <bar-chart
+        :currentTab="selectedTab"
         :user="user"
         :company="selectedCompany"
         :key="Date.now() + 1"
