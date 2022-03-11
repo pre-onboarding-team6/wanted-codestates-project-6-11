@@ -22,33 +22,33 @@
         <span class="company-text">
           {{ company }}
         </span>
-      </span>
-      <span
-        class="clear"
-        v-on:click="clearResult"
-        :class="{ hide: this.company === '' }"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          x="0px"
-          y="0px"
-          viewBox="0 0 330 330"
+        <span
+          class="clear"
+          v-on:click="clearResult"
+          :class="{ hide: this.company === '' }"
         >
-          <g id="XMLID_28_">
-            <path
-              fill="#d2d2d2"
-              id="XMLID_29_"
-              d="M165,0C120.926,0,79.492,17.163,48.328,48.327c-64.334,64.333-64.334,169.011-0.002,233.345
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 330 330"
+          >
+            <g id="XMLID_28_">
+              <path
+                fill="#d2d2d2"
+                id="XMLID_29_"
+                d="M165,0C120.926,0,79.492,17.163,48.328,48.327c-64.334,64.333-64.334,169.011-0.002,233.345
 		C79.49,312.837,120.926,330,165,330c44.072,0,85.508-17.163,116.672-48.328c64.334-64.334,64.334-169.012,0-233.345
 		C250.508,17.163,209.072,0,165,0z M239.246,239.245c-2.93,2.929-6.768,4.394-10.607,4.394c-3.838,0-7.678-1.465-10.605-4.394
 		L165,186.213l-53.033,53.033c-2.93,2.929-6.768,4.394-10.607,4.394c-3.838,0-7.678-1.465-10.605-4.394
 		c-5.859-5.857-5.859-15.355,0-21.213L143.787,165l-53.033-53.033c-5.859-5.857-5.859-15.355,0-21.213
 		c5.857-5.857,15.355-5.857,21.213,0L165,143.787l53.031-53.033c5.857-5.857,15.355-5.857,21.213,0
 		c5.859,5.857,5.859,15.355,0,21.213L186.213,165l53.033,53.032C245.104,223.89,245.104,233.388,239.246,239.245z"
-            />
-          </g></svg
-      ></span>
+              />
+            </g></svg
+        ></span>
+      </span>
     </div>
     <input
       class="search-input"
@@ -113,13 +113,14 @@ export default {
 .search-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 20px 15px;
+  padding: 0px 15px;
+  padding-bottom: 15px;
 }
 .search-row {
-  width: 360px;
-  padding: 16px 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 62px;
 
   font-family: 'Noto Sans';
   font-style: normal;
@@ -129,16 +130,18 @@ export default {
 }
 .search-title {
   display: flex;
-  flex-direction: row;
   align-items: center;
+
+  width: 234px;
+  height: 22px;
 
   font-weight: 700;
   font-size: 16px;
 
   color: #727272;
 }
-.search-title svg {
-  margin-left: 4px;
+.search-title > span {
+  margin-right: 6px;
 }
 .input-wrapper {
   width: 100%;
@@ -147,67 +150,29 @@ export default {
 }
 .search-company {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 0px 0px 0px 16px;
+  justify-content: space-between;
+  align-items: center;
+
   width: 81px;
   height: 20px;
-  left: 235px;
-  top: 21px;
 
   font-weight: 400;
   font-size: 14px;
-
-  text-align: right;
 }
 .company-text {
-  /* 그레이비랩 */
-
-  width: 65px;
-  height: 20px;
-  left: 16px;
-  top: 0px;
-
-  font-family: 'Noto Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-  /* identical to box height, or 20px */
-
-  text-align: right;
-
-  /* Mono./Dark 020 . 727272 */
-
   color: #727272;
 }
 .search-input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   padding: 12px 16px;
-
-  width: 328px;
   height: 48px;
-  left: 16px;
-  top: 134px;
-
-  /* Mono./Light 010 . F8F8F8 */
-
   background: #f8f8f8;
-  /* Mono./Light 020 . F2F2F2 */
-
   border: 1px solid #f2f2f2;
-  box-sizing: border-box;
   border-radius: 4px;
 }
 .clear {
   cursor: pointer;
   width: 16px;
   height: 16px;
-  left: 328px;
-  top: 23px;
 }
 .hide {
   display: none;
