@@ -1,7 +1,23 @@
 <template>
   <div class="search-wrapper">
     <div class="search-row">
-      <span class="search-title">검색 결과 ></span>
+      <span class="search-title"
+        ><span>검색 결과</span>
+        <svg
+          width="6"
+          height="10"
+          viewBox="0 0 6 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 1L5 5L1 9"
+            stroke="#727272"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          /></svg
+      ></span>
       <span class="search-company" :class="{ hide: this.company === '' }">
         <span class="company-text">
           {{ company }}
@@ -11,8 +27,28 @@
         class="clear"
         @click="clearResult"
         :class="{ hide: this.company === '' }"
-        >x</span
       >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 330 330"
+        >
+          <g id="XMLID_28_">
+            <path
+              fill="#d2d2d2"
+              id="XMLID_29_"
+              d="M165,0C120.926,0,79.492,17.163,48.328,48.327c-64.334,64.333-64.334,169.011-0.002,233.345
+		C79.49,312.837,120.926,330,165,330c44.072,0,85.508-17.163,116.672-48.328c64.334-64.334,64.334-169.012,0-233.345
+		C250.508,17.163,209.072,0,165,0z M239.246,239.245c-2.93,2.929-6.768,4.394-10.607,4.394c-3.838,0-7.678-1.465-10.605-4.394
+		L165,186.213l-53.033,53.033c-2.93,2.929-6.768,4.394-10.607,4.394c-3.838,0-7.678-1.465-10.605-4.394
+		c-5.859-5.857-5.859-15.355,0-21.213L143.787,165l-53.033-53.033c-5.859-5.857-5.859-15.355,0-21.213
+		c5.857-5.857,15.355-5.857,21.213,0L165,143.787l53.031-53.033c5.857-5.857,15.355-5.857,21.213,0
+		c5.859,5.857,5.859,15.355,0,21.213L186.213,165l53.033,53.032C245.104,223.89,245.104,233.388,239.246,239.245z"
+            />
+          </g></svg
+      ></span>
     </div>
     <input
       class="search-input"
@@ -82,6 +118,12 @@ export default {
   height: 62px;
   left: 0px;
   top: 72px;
+
+  font-family: 'Noto Sans';
+  font-style: normal;
+  line-height: 140%;
+
+  color: #727272;
 }
 .search-title {
   display: flex;
@@ -95,14 +137,8 @@ export default {
   left: 16px;
   top: 20px;
 
-  font-family: 'Noto Sans';
-  font-style: normal;
   font-weight: 700;
   font-size: 16px;
-  line-height: 140%;
-  /* or 22px */
-
-  /* Mono./Dark 020 . 727272 */
 
   color: #727272;
 }
@@ -124,23 +160,14 @@ export default {
   left: 235px;
   top: 21px;
 
-  font-family: 'Noto Sans';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 140%;
-  /* identical to box height, or 20px */
 
   text-align: right;
-
-  /* Mono./Dark 020 . 727272 */
-
-  color: #727272;
 }
 .company-text {
   /* 그레이비랩 */
 
-  position: static;
   width: 65px;
   height: 20px;
   left: 16px;
