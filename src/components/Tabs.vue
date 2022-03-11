@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { eventBus } from '../main.js';
 import Tab from './tabs/Tab.vue';
 
 export default {
@@ -33,6 +34,17 @@ export default {
         { order: 'tab3', content: '회사' },
       ],
     };
+  },
+  created() {
+    this.$on('input', (tab) => {
+      this.currentTab = tab;
+    });
+  },
+  watch: {
+    currentTab() {
+      console.log(this.currentTab);
+      eventBus.$emit('selectTab', this.currentTab);
+    },
   },
   computed: {
     current() {

@@ -1,5 +1,5 @@
 <template>
-  <button :class="[checkFocus, 'tab']" @click="$emit('input', tabOrder)">
+  <button :class="[checkFocus, 'tab']" @click="onTabClick">
     <Icon
       :isDouble="tabOrder === 'tab1' ? true : false"
       :isCompany="tabOrder === 'tab3' ? true : false"
@@ -24,6 +24,11 @@ export default {
   computed: {
     checkFocus() {
       return this.tabOrder === this.value ? 'focus' : '';
+    },
+  },
+  methods: {
+    onTabClick() {
+      this.$emit('input', this.tabOrder);
     },
   },
 };
