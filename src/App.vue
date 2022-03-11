@@ -1,4 +1,5 @@
 <template>
+  <div id="app">
   <div id="background">
     <div id="app"><Header /></div>
   </div>
